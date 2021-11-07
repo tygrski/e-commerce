@@ -13,18 +13,17 @@ const ProductTag = require('./ProductTag');
 
  // Categories have many Products
  Category.hasMany(Product, {
-  foreignKey: 'product_id'
-
- });
+  foreignKey: 'category_id'
+});
 
  // Products belongToMany Tags (through ProductTag)
- Product.belongsToMany(Tags, {
-    foreignKey: 'tag_id'
+ Product.belongsToMany(Tag, {
+    foreignKey: 'product_id'
  });
 
  // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-foreignKey: 'product_id'
+foreignKey: 'tag_id'
 });
 
 // module exporting 
