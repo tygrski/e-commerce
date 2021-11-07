@@ -3,6 +3,7 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
+// const sequelize = require('../config/connection')
 
 // associations 
 // Products belongsTo Category
@@ -33,3 +34,4 @@ module.exports = {
   Tag,
   ProductTag,
 };
+
