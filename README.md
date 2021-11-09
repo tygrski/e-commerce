@@ -14,5 +14,5 @@
     ✔-MySQL2
     ✔-doenv
     
-   #### Created by Travis Tybor
+   #### Contributions in this repo by Travis Tybor
     
