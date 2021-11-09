@@ -17,18 +17,21 @@ router.get('/', (req, res) => {
     include: [
       {
       model: Category,
-      attributes: ['category_id', 'category_name']
+      attributes: ['id', 'category_name']
       
       }, 
       {
         model: Tag,
-        attributes: ['tag_id', 'tag_name']
+        attributes: ['id', 'tag_name']
       }   
     ]
   }).then(data => {
     if(!data) {
       res.status(404).json({ message: "no product found"})
     }  res.json(data)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 
 });
@@ -51,12 +54,12 @@ router.get('/:id', (req, res) => {
     include: [
       {
       model: Category,
-      attributes: ['category_id', 'category_name']
+      attributes: ['id', 'category_name']
       
       }, 
       {
         model: Tag,
-        attributes: ['tag_id', 'tag_name']
+        attributes: ['id', 'tag_name']
       }   
     ]
   }).then(data => {
