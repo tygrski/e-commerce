@@ -16,10 +16,10 @@ router.get('/', (req, res) => {
         model: Product,
         attributes: ["id", "product_name", "price", "stock", "category_id"]
       },
-      {
-      model: ProductTag,
-      attributes: ["id","product_id", "tag_id"]
-      }
+      // {
+      // model: ProductTag,
+      // attributes: ["id","product_id", "tag_id"]
+      // }
     ]
   }).then(data =>  res.json(data))
   .catch(err => {
@@ -36,18 +36,24 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ["tag_name"],
     include: [
-      {
-      model: Category,
-      attributes: ['category_id', 'category_name']
-      
-      }, 
       {
         model: Product,
         attributes: ["id", "product_name", "price", "stock", "category_id"]
       }
     ]
+    // attributes: ["tag_name"],
+    // include: [
+    //   {
+    //   model: Category,
+    //   attributes: ['category_id', 'category_name']
+      
+    //   }, 
+    //   {
+    //     model: Product,
+    //     attributes: ["id", "product_name", "price", "stock", "category_id"]
+    //   }
+    // ]
   })
   .then(data => {
     if(!data) {
@@ -63,10 +69,10 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    tagname: red.body.tag_name
-  }).then(data =res.json(data))
+    tag_name: req.body.tag_name
+  }).then(data => res.json(data))
   .catch(err => {
-    console.log(err);
+    console.log(err); 
     res.status(500).json(err)
   });
 });
@@ -75,7 +81,7 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
     {
-      tagname: req.body.tag_name
+      tag_name: req.body.tag_name
     },
     {
       where: {
